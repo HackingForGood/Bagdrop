@@ -39,7 +39,7 @@ function FriendlyChat() {
   this.signInButton.addEventListener('click', this.signIn.bind(this));
 
   this.initFirebase();
-  this.listings = [];
+  this.users = [];
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
@@ -57,52 +57,53 @@ FriendlyChat.prototype.loadMessages = function() {
   console.log("In loadMessages");
 
   // Reference to the /messages/ database path.
-  this.listingsRef = this.database.ref('listings');
+  this.usersRef = this.database.ref('Users');
   // Make sure we remove all previous listeners.
-  this.listingsRef.off();
+  this.usersRef.off();
 
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(data) {
     var val = data.val();
-    console.log("In setMessage:");
+    console.log("In setMessage:")
     console.log(val.location);
+
     var address="";
     var zipcode="";
     if (val.location) {
       address = val.location.streetAddress+", "+val.location.city+", "+val.location.state+" - "+val.location.zipcode;
       zipcode = val.location.zipcode;
     }
-    var listing  = {
-      "key": data.key,
-      "name": val.name,
+    var user  = {
+      "name": data.key,
       "allowableCapacity": val.allowableCapacity,
       "zipcode": zipcode,
       "address": address,
       "pricePerHour": val.pricePerHour
     };
-    this.listings.push(listing);
-    console.log("Created listing object: " +  listing);
+    this.users.push(user);
+    console.log("Created user object: " +  user);
   }.bind(this);
-  this.listingsRef.limitToLast(12).on('child_added', setMessage);
-  this.listingsRef.limitToLast(12).on('child_changed', setMessage);
+  this.usersRef.limitToLast(12).on('child_added', setMessage);
+  this.usersRef.limitToLast(12).on('child_changed', setMessage);
 };
 
 // Saves a new message on the Firebase DB.
 FriendlyChat.prototype.saveMessage = function(e) {
   e.preventDefault();
 
-  console.log("this.listings.length: " + this.listings.length);
-  for (var i=0; i<this.listings.length; i++) {
-    var listing = this.listings[i];
+  console.log("this.users.length: " + this.users.length);
+  for (var i=0; i<this.users.length; i++) {
+    var user = this.users[i];
+    console.log("User: " + user.name);
 
-    if (this.numberOfBags.value > listing.allowableCapacity) {
+    if (this.numberOfBags.value > user.allowableCapacity) {
       continue;
     }
-    if (listing.zipcode != this.area.value) {
+    if (user.zipcode != this.area.value) {
       continue;
     }
 
-    this.displayMessage(listing.key, listing.name, listing.address, listing.pricePerHour);
+    this.displayMessage(user.name, user.address, user.pricePerHour);
   }
 
   /*
@@ -291,16 +292,16 @@ FriendlyChat.MESSAGE_TEMPLATE =
 FriendlyChat.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-FriendlyChat.prototype.displayMessage = function(key, name, address, pricePerHour) {
+FriendlyChat.prototype.displayMessage = function(name, address, pricePerHour) {
   console.log("In displayMessage");
 
-  var div = document.getElementById(key);
+  var div = document.getElementById(name);
   // If an element for that message does not exists yet we create it.
   if (!div) {
     var container = document.createElement('div');
     container.innerHTML = FriendlyChat.MESSAGE_TEMPLATE;
     div = container.firstChild;
-    div.setAttribute('id', key);
+    div.setAttribute('id', name);
     this.messageList.appendChild(div);
   }
 

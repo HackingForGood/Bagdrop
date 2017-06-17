@@ -317,16 +317,6 @@ FriendlyChat.prototype.displayMessage = function(name, address, pricePerHour) {
   this.checkinDate.focus();
 };
 
-// Enables or disables the submit button depending on the values of the input
-// fields.
-//FriendlyChat.prototype.toggleButton = function() {
-//  if (this.messageInput.value) {
-//    this.submitButton.removeAttribute('disabled');
-//  } else {
-//    this.submitButton.setAttribute('disabled', 'true');
-//  }
-//};
-
 // Checks that the Firebase SDK has been correctly setup and configured.
 FriendlyChat.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {

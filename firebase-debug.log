@@ -1,0 +1,36 @@
+[debug] [2017-06-17T21:19:52.312Z] ----------------------------------------------------------------------
+[debug] [2017-06-17T21:19:52.314Z] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-06-17T21:19:52.315Z] CLI Version:  3.9.1
+[debug] [2017-06-17T21:19:52.315Z] Platform:     darwin
+[debug] [2017-06-17T21:19:52.315Z] Node Version: v4.4.2
+[debug] [2017-06-17T21:19:52.316Z] Time:         Sat Jun 17 2017 17:19:52 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:52.316Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-17T21:19:52.329Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-17T21:19:52.330Z] > authorizing via signed-in user
+[debug] [2017-06-17T21:19:52.331Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-17T21:19:52.332Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/sAeWeR81L-7P-glY0SvvRl3sdiNMeXvy9BdLJsb7fGs',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jun 17 2017 17:19:52 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:52.481Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:19:52.484Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/myfirstproject-d3466  
+ Sat Jun 17 2017 17:19:52 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:53.140Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:19:53.140Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/myfirstproject-d3466/tokens  
+ Sat Jun 17 2017 17:19:53 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:53.579Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/rrathod/Documents/Bagdrop'...
+[info] 
+[debug] [2017-06-17T21:19:53.582Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/myfirstproject-d3466  
+ Sat Jun 17 2017 17:19:53 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:53.879Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-17T21:19:53.879Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/415945415152/clients/_:getWebAppConfig  
+ Sat Jun 17 2017 17:19:53 GMT-0400 (EDT)
+[debug] [2017-06-17T21:19:54.496Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
